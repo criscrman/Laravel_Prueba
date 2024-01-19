@@ -5,3 +5,69 @@
 [x-cloak] {
     display: none;
 }
+
+/* Botones */
+.btn {
+    @apply font-bold py-2 px-4;
+  }
+  .btn-green {
+    @apply bg-green-500 text-white  rounded-l-full;
+  }
+  .btn-green:hover {
+    @apply bg-green-700 border-2;
+  }
+
+  .btn-red {
+    @apply bg-red-700 text-white rounded-r-full;
+  }
+  .btn-red:hover {
+    @apply bg-red-800 border-2 border-red-900;
+  }
+  .btn-red:focus {
+    @apply outline-none ring-4 ring-red-300;
+  }
+
+  .btn-group {
+    @apply  inline-flex mt-2 rounded-md shadow-sm;
+  }
+
+  .btn-neutro {
+    @apply bg-slate-500 rounded-lg text-white m-1 mt-6;
+  }
+  .btn-neutro:hover{
+    @apply bg-slate-600 border-2 border-gray-500 ;
+  }
+
+  .btn-l {
+    @apply bg-slate-500 rounded-l-full text-white
+  }
+  .btn-l:hover {
+    @apply bg-slate-600 border-2 border-slate-800;
+  }
+  .btn-center{
+    @apply bg-blue-500 text-white;
+  }
+
+  .btn-center:hover {
+    @apply bg-blue-600 border-2 border-blue-800;
+  }
+
+
+  /*contenido de las páginas*/
+
+  .conteiner_create {
+    @apply grid place-items-center h-screen bg-slate-200;
+  }
+ 
+   
+    label {
+        @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+    }
+
+    .input-crear {
+        @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+    }
+
+    h1 {
+        @apply font-bold  ;
+    }

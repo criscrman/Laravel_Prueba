@@ -7,8 +7,14 @@
     @livewire('navigation-menu')
     <div class="flex-1 m-2.5 p-2 bg-slate-400">
     <h1>Hola mundo</h1>
+    
+    
+
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eius aliquid minus est, voluptatibus dignissimos eaque, error saepe, consequatur ipsum soluta? Iste dolorum explicabo dolor animi est odio dolorem officia.</p>
-    <a href="{{route('Inventario.create')}}" class="btn btn-neutro">Crear Nuevo</a>
+    <x-modal-form title="Crear Nuevo Registro">
+        
+
+    </x-modal-form>
     </div>
     
     <div class="bg-gray-300 rounded-lg px-2 mt-1 mx-2 ">
@@ -40,4 +46,10 @@
 
     {{$Inventarios->links()}}
     </div>
+
+  
+  
+
+  
+
     @endsection
