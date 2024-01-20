@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreInventario;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class InventarioController extends Controller
         return view('prueba.create' );
     }
 
-    public function store(/*Request*/ StorePrueba $request){
+    public function store(/*Request*/ StoreInventario $request){
          /* Validadores hechos de forma manual/*
        /* $request->validate([  
             'name' => 'required|min:3',
@@ -44,9 +45,9 @@ class InventarioController extends Controller
         
         $prueba-> save();
         */
-        $prueba = Inventario::create( $request->all() );
+        $Inventario = Inventario::create( $request->all());
 
-        return redirect()->route('Inventario.show',$prueba);
+        return redirect()->route('Inventario.index',$Inventario);
 
         
         
@@ -68,7 +69,7 @@ class InventarioController extends Controller
 
     }
 
-    public function update(StorePrueba $request ,Inventario $Inventario){
+    public function update(StoreInventario $request ,Inventario $Inventario){
         /* Validadores hechos de forma manual/*
         /*$request->validate([  
             'name' => 'required|min:3|max:10',

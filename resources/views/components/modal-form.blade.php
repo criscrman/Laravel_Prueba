@@ -1,8 +1,6 @@
 @props(['title'])
 
-<button type="button" x-data x-on:click="$dispatch('open-modal')" class="bg-green-800 text-yellow-50 p-1 rounded">
-        Crear Nuevo
-      </button>
+
 
       <div
         x-data = "{show : false}"
@@ -40,13 +38,13 @@
                     <div class="form">
                 
                     
-                    <form class="form-1" action="" method="post">
+                    <form class="form-1" action="{{route('Inventario.store')}}" method="post">
                       @csrf
                       <div>
-                        <label for="name" class="">Nombre Completo</label>
-                        <input type="text" name="name" value="{{old('name')}}" class="input-crear" placeholder="Cristian Peréz..." required>
+                        <label for="Nombre" class="">Nombre Completo</label>
+                        <input type="text" name="Nombre" value="{{old('Nombre')}}" class="input-crear" placeholder="Cristian Peréz..." required>
                         
-                        @error('name')
+                        @error('Nombre')
                         <span>{{$message}}</span>
                         @enderror
                   
@@ -54,23 +52,71 @@
                         
                       <div>
                   
-                      <label for="titulo">
+                      <label for="Serial">
                         Titulo
-                      </label><input type="text" name="titulo" class="input-crear" value="{{old('titulo')}}" placeholder="Prueba Tipo A...">
+                      </label><input type="text" name="Serial" class="input-crear" value="{{old('Serial')}}" placeholder="Prueba Tipo A...">
                         
-                        @error('titulo')
+                        @error('Serial')
                         <span>{{$message}}</span>
                         @enderror
                   
                       </div>
+                      <div>
+
+                      <label for="Ubicacion">
+                        Ubicacion
+                      </label><input type="text" name="Ubicacion" class="input-crear" value="{{old('Ubicacion')}}" placeholder="Prueba Tipo A...">
+                        
+                        @error('Ubicacion')
+                        <span>{{$message}}</span>
+                        @enderror
+                  
+                      </div>
+                      <div>
+
+                      <label for="Estado">
+                        Estado
+                      </label><input type="text" name="Estado" class="input-crear" value="{{old('Estado')}}" placeholder="Prueba Tipo A...">
+                        
+                        @error('Estado')
+                        <span>{{$message}}</span>
+                        @enderror
+                  
+                      </div>
+                      
+                      <div>
+                      <label for="Precio">
+                        Precio
+                      </label><input type="text" name="Precio" class="input-crear" value="{{old('Precio')}}" placeholder="Prueba Tipo A...">
+                        
+                        @error('Precio')
+                        <span>{{$message}}</span>
+                        @enderror
+                  
+                      </div>
+
+                      <div>
+
+
+                        <label for="Ultimo_Mantenimiento">último Mantenimiento</label><input type="date" id="start" name="Ultimo_Mantenimiento" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+                      <label for="Recomentacion">
+                        Recomentacion
+                      </label><input type="text" name="Recomentacion" class="input-crear" value="{{old('Recomentacion')}}" placeholder="Prueba Tipo A...">
+                        
+                        @error('Recomentacion')
+                        <span>{{$message}}</span>
+                        @enderror
+                  
+                      </div>
+                  
                   
                     
                    
                       
                         <div>
-                        <label for="description">Descripción</label><textarea name="description"  class="input-crear" cols="15" rows="5">{{old('description')}}</textarea>
+                        <label for="Descripcion">Descripción</label><textarea name="Descripcion"  class="input-crear" cols="15" rows="5">{{old('Descripcion')}}</textarea>
                           
-                        @error('description')
+                        @error('Descripcion')
                         <span>{{$message}}</span>
                         @enderror
                         </div>  

@@ -8,7 +8,9 @@
     <div class="flex-1 m-2.5 p-2 bg-slate-400">
     <h1>Hola mundo</h1>
     
-    
+    <button type="button" x-data x-on:click="$dispatch('open-modal')" class="bg-green-800 text-yellow-50 p-1 rounded">
+        Crear Nuevo
+      </button>
 
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eius aliquid minus est, voluptatibus dignissimos eaque, error saepe, consequatur ipsum soluta? Iste dolorum explicabo dolor animi est odio dolorem officia.</p>
     <x-modal-form title="Crear Nuevo Registro">
