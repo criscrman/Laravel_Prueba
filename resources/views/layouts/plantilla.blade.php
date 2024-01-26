@@ -20,6 +20,8 @@
 
     @livewireScripts
     <!-- footer -->
+
+    
     
 </body>
 </html>

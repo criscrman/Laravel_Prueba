@@ -8,7 +8,7 @@
     <div class="flex-1 m-2.5 p-2 bg-slate-400">
     <h1>Hola mundo</h1>
     
-    <button type="button" x-data x-on:click="$dispatch('open-modal')" class="bg-green-800 text-yellow-50 p-1 rounded">
+    <button name="crear" type="button" x-data x-on:click="$dispatch('open-modal')" class="bg-green-800 text-yellow-50 p-1 rounded">
         Crear Nuevo
       </button>
 
@@ -48,6 +48,9 @@
 
     {{$Inventarios->links()}}
     </div>
+
+
+    
 
   
   

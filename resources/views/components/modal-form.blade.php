@@ -1,4 +1,4 @@
-@props(['title'])
+@props(['name', 'title'])
 
 
 
@@ -8,15 +8,16 @@
         x-on:open-modal.window = "show = true"
         x-on:close-modal.window = "show = false"
         x-on:keydown.escape.window = "show = false"
+        tabindex="-1"
         class="fixed z-50 inset-0"
       >
           {{-- BackGround --}}
           <div x-on:click="show = false" class="fixed inset-0 bg-gray-300 opacity-75 "></div>
 
           {{-- Model --}}
-          <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <div wire:ignore.self class="flex justify-center items-center overflow-y-auto p-4  w-full max-h-full">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="relative bg-white w-11/12 md:w-7/12 rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                   @if (isset($title))
@@ -32,13 +33,14 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                 </div>
+                
                 <!-- Modal body -->
-                <div class="p-4 md:p-5 space-y-4">
+                <div class="p-4 md:p-5 space-y-4 ">
              
-                    <div class="form">
+                    <div class="form ">
                 
                     
-                    <form class="form-1" action="{{route('Inventario.store')}}" method="post">
+                    <form class="form-1  md:grid grid-cols-2 gap-4" action="{{route('Inventario.store')}}" method="post">
                       @csrf
                       <div>
                         <label for="Nombre" class="">Nombre Completo</label>
@@ -95,10 +97,12 @@
                   
                       </div>
 
+                      
+
+                        <div>
+                      <label for="Ultimo_Mantenimiento">Último Mantenimiento</label><input type="date" id="start" name="Ultimo_Mantenimiento" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+                      </div>
                       <div>
-
-
-                        <label for="Ultimo_Mantenimiento">último Mantenimiento</label><input type="date" id="start" name="Ultimo_Mantenimiento" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
                       <label for="Recomentacion">
                         Recomentacion
                       </label><input type="text" name="Recomentacion" class="input-crear" value="{{old('Recomentacion')}}" placeholder="Prueba Tipo A...">
@@ -114,16 +118,18 @@
                    
                       
                         <div>
-                        <label for="Descripcion">Descripción</label><textarea name="Descripcion"  class="input-crear" cols="15" rows="5">{{old('Descripcion')}}</textarea>
+                        <label for="Descripcion">Descripción</label><textarea name="Descripcion"  class="input-crear" cols="30" rows="3">{{old('Descripcion')}}</textarea>
                           
                         @error('Descripcion')
                         <span>{{$message}}</span>
                         @enderror
                         </div>  
                         <!-- Modal footer -->
-                          <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="default-modal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enviar</button>
-                            <button x-on:click="show = false" data-modal-hide="default-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
+                          <div  wire:ignore.self class="flex items-center col-start-1 col-end-3 p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                      
+                            <button  x-on:click="show = true"data-modal-hide="default-modal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enviar</button>
+
+                            <button x-on:click="$dispatch('close-modal')"  type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
                         </div>
                         </div>
                   
