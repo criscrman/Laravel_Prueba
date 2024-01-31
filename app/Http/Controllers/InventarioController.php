@@ -93,10 +93,11 @@ class InventarioController extends Controller
 
     }
 
-    public function destroy(Inventario $Inventario){
+    public function destroy($id){
+        $Inventario = Inventario::find($id);
         $Inventario -> delete();
 
-        return redirect()->route('Inventario.index');
+        return redirect()->back();
     }
 
 }
