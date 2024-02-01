@@ -10,29 +10,77 @@
 
  <div class="max-w-7xl mx-auto  sm:px-0 md:px-6 lg:px-8">
    
-    <div class="py-4 px-3">
-    <x-input type="text" wire:model.live="search" class="w-full" placeholder="Buscar..." />
-    
+    <div class="py-4 px-3 flex items-center">
+    <x-input type="text" wire:model.live="search" class="flex-1 mr-4" placeholder="Buscar..." />
+    @livewire('create-post')
     </div>
    
 <div class="relative overflow-x-auto shadow-md md:rounded-lg">
     @if ($Inventarios->count()) 
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="min-w-full divide-y text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class=" w-full text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    ID
+                <th wire:click="order('id')" scope="col" class="flex flex-row text-left cursor-pointer w-24 px-6 py-3">
+                    <div class="float p-1">ID</div>
+                    {{--sort --}}
+                    @if ($sort == "id")
+                    
+                        @if ($direction == 'asc')
+                        <i class="fa-solid fa-arrow-down-a-z float-right pt-1"></i>
+                        
+                        @else
+                        <i class="fa-solid fa-arrow-up-a-z float-right pt-1"></i>
+                        @endif
+                    @else
+                    <i class="fa-solid fa-sort float-right pt-1"></i>
+                    @endif
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th wire:click="order('Nombre')" scope="col" class="min-w-30 cursor-pointer px-6 py-3">
                     Nombre
+                    {{--sort --}}
+                    @if ($sort == "Nombre")
+                    
+                        @if ($direction == 'asc')
+                        <i class="fa-solid fa-arrow-down-a-z  float-right p-1"></i>
+                        
+                        @else
+                        <i class="fa-solid fa-arrow-up-a-z  float-right p-1"></i>
+                        @endif
+                    @else
+                    <i class="fa-solid fa-sort float-right p-1"></i>
+                    @endif
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th wire:click="order('Descripcion')" scope="col" class=" cursor-pointer px-6 py-3 ">
                     Descripción
+                    {{--sort --}}
+                    @if ($sort == "Descripcion")
+                    
+                        @if ($direction == 'asc')
+                        <i class="fa-solid fa-arrow-down-a-z float-right p-1"></i>
+                        
+                        @else
+                        <i class="fa-solid fa-arrow-up-a-z float-right p-1"></i>
+                        @endif
+                    @else
+                    <i class="fa-solid fa-sort float-right p-1"></i>
+                    @endif
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th wire:click="order('Estado')" scope="col" class="float cursor-pointer px-6 py-3">
                     Estado
-                </th>
-                <th scope="col" class="px-6 py-3">
+                    {{--sort --}}
+                    @if ($sort == "Estado")
+                    
+                        @if ($direction == 'asc')
+                        <i class="fa-solid fa-arrow-down-a-z float-right p-1"></i>
+                        
+                        @else
+                        <i class="fa-solid fa-arrow-up-a-z float-right p-1"></i>
+                        @endif
+                    @else
+                    <i class="fa-solid fa-sort float-right p-1"></i>
+                    @endif
+                </th >
+                <th  scope="col" class="cursor-pointer px-6 py-3">
                     
                 </th>
             </tr>
@@ -44,13 +92,13 @@
              
                   
               
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 min-w-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$Inventario->id}}
                 </th>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 min-w-12 max-w-25">
                     {{$Inventario->Nombre}}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 max-w-60">
                     {{$Inventario->Descripcion}}
                 </td>
                 <td class="px-6 py-4">
