@@ -19,80 +19,69 @@
 
                     <div>
                             <label for="Nombre" class="">Nombre Completo</label>
-                            <input type="text" wire:model="Nombre" name="Nombre" value="{{ old('Nombre') }}" class="input-crear"
+                            <input type="text" wire:model.blur="Nombre" name="Nombre" value="{{ old('Nombre') }}" class="input-crear"
                                 placeholder="Cristian Peréz..." required>
-
-                            @error('Nombre')
-                                <span>{{ $message }}</span>
-                            @enderror
+                                <x-input-error for="Nombre"/>
+                          
                     </div>
 
                     <div>
 
                         <label for="Serial">
                             Titulo
-                        </label><input type="text" wire:model="Serial" name="Serial" class="input-crear" value="{{ old('Serial') }}"
+                        </label><input type="text" wire:model.blur="Serial" name="Serial" class="input-crear" value="{{ old('Serial') }}"
                             placeholder="Prueba Tipo A..." x-validate.wholenumber
                             data-error-msg="positive whole number required">
-
-                        @error('Serial')
-                            <span>{{ $message }}</span>
-                        @enderror
-
+                            <x-input-error for="Serial"/>
+                        
                     </div>
                     <div>
 
                         <label for="Ubicacion">
                             Ubicacion
-                        </label><input type="text" wire:model="Ubicacion" name="Ubicacion" class="input-crear"
+                        </label><input type="text" wire:model.blur="Ubicacion" name="Ubicacion" class="input-crear"
                             value="{{ old('Ubicacion') }}" placeholder="Prueba Tipo A...">
-
-                        @error('Ubicacion')
-                            <span>{{ $message }}</span>
-                        @enderror
-
+                            <x-input-error for="Ubicacion"/>
                     </div>
                     <div>
 
                         <label for="Estado">
                             Estado
-                        </label><input type="text" wire:model="Estado" name="Estado" class="input-crear" value="{{ old('Estado') }}"
+                        </label><input type="text" wire:model.blur="Estado" name="Estado" class="input-crear" value="{{ old('Estado') }}"
                             placeholder="Prueba Tipo A...">
-
-                        @error('Estado')
+                        <x-input-error for="Estado"/>
+                       {{-- @error('Estado')
                             <span>{{ $message }}</span>
                         @enderror
-
+                        --}}
                     </div>
 
                     <div>
                         <label for="Precio">
                             Precio
-                        </label><input type="text" wire:model="Precio" name="Precio" class="input-crear"
+                        </label><input type="text" wire:model.blur="Precio" name="Precio" class="input-crear"
                             value="{{ old('Precio') }}" placeholder="Prueba Tipo A...">
-
-                        @error('Precio')
-                            <span>{{ $message }}</span>
-                        @enderror
+                            <x-input-error for="Precio"/>
+                       
 
                     </div>
 
 
 
                     <div>
-                        <label for="Ultimo_Mantenimiento">Último Mantenimiento</label><input wire:model="Ultimo_Mantenimiento" type="date"
+                        <label for="Ultimo_Mantenimiento">Último Mantenimiento</label><input wire:model.blur="Ultimo_Mantenimiento" type="date"
                             id="start" name="Ultimo_Mantenimiento" value="2018-07-22" min="2018-01-01"
                             max="2018-12-31" />
+                            
+                            <x-input-error for="Ultimo_Mantenimiento"/>
                     </div>
                     <div>
                         <label for="Recomentacion">
-                            Recomentacion
-                        </label><input type="text" name="Recomentacion" wire:model="Recomentacion"  class="input-crear"
-                            value="{{ old('Recomentacion') }}" placeholder="Prueba Tipo A...">
-
-                        @error('Recomentacion')
-                            <span>{{ $message }}</span>
-                        @enderror
+                            Recomendación
+                        </label><input type="text" name="Recomentacion" wire:model.change="Recomentacion"  class="input-crear"
+                            value="{{ old('Recomentacion') }}" placeholder="Se recomienda que...">
+                            <x-input-error for="Recomentacion"/>
+                        
 
                     </div>
 
@@ -102,11 +91,9 @@
 
                     <div>
                         <label for="Descripcion">Descripción</label>
-                        <textarea name="Descripcion" wire:model="Descripcion" class="input-crear" cols="30" rows="3">{{ old('Descripcion') }}</textarea>
-
-                        @error('Descripcion')
-                            <span>{{ $message }}</span>
-                        @enderror
+                        <textarea name="Descripcion" wire:model.live="Descripcion" class="input-crear" cols="30" rows="3">{{ old('Descripcion') }}</textarea>
+                        <x-input-error for="Descripcion"/>
+                      
                     </div>
 
 

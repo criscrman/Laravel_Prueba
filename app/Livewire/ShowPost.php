@@ -13,6 +13,8 @@ class ShowPost extends Component
 
     public $sort = 'id';
     public $direction = 'desc';
+
+    protected $listeners = ['render' => 'render'];
     
     public function render()
     {   
