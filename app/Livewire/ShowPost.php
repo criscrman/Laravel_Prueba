@@ -15,6 +15,10 @@ class ShowPost extends Component
     public $direction = 'desc';
 
     protected $listeners = ['render' => 'render'];
+
+    public $Inventario;
+
+    public $Open_Edit = false ;
     
     public function render()
     {   
@@ -46,5 +50,12 @@ class ShowPost extends Component
        
        
     }
+
+    public function edit(Inventario $Inventario) {
+        $this-> Inventario = $Inventario;
+        $this-> Open_Edit = true;
+    }
+
+  
     
 }

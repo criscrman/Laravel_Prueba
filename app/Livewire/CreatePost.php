@@ -8,7 +8,7 @@ use Livewire\Component;
 class CreatePost extends Component
 {
 
-    public $open="true";
+    public $open= false;
 
     public $Nombre, $Serial, $Descripcion, $Ubicacion, $Estado, $Precio, $Ultimo_Mantenimiento, $Recomentacion;
 
