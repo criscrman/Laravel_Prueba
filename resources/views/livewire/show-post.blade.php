@@ -106,7 +106,17 @@
                 </td>
                 <td class="px-6 py-4">
                     
-                    <livewire:edit-post :$Inventario :key="$Inventario->id" />
+                    <a class="btn btn-green" wire:click.prevent="edit(({{ $Inventario->id }}))">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+
+                    <button wire:click="delete({{ $Inventario->id }})">Eliminar</button> 
+
+                    
+
+              
+         
                 </td>
 
                 
@@ -124,6 +134,27 @@
 
 
  </div>
+
+ <x-dialog-modal wire:model.live="open_edit">
+
+    <x-slot name="title">
+        Editar Registro {{$Inventario->Nombre}}
+    </x-slot>
+
+    <x-slot name="content">
+        {{$Inventario->id}}
+
+        <label for="Nombre" class="">Nombre Completo</label>
+        <input type="text" wire:model="PostEdit.Nombre" name="Nombre" class="input-crear"
+            placeholder="Cristian Peréz..." required>
+            <x-input-error for="Nombre"/>
+    </x-slot>
+
+    <x-slot name="footer">
+    </x-slot>
+
+
+ </x-dialog-modal>
 
 
 </div>

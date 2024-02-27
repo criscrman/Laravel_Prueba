@@ -5,20 +5,24 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Inventario;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class ShowPost extends Component
 {
     use WithPagination;
     public string $search = '';
-
+    public $Inventario;
     public $sort = 'id';
     public $direction = 'desc';
 
     protected $listeners = ['render' => 'render'];
 
-    public $Inventario;
 
-    public $Open_Edit = false ;
+    public $PostEdit = [
+        'Nombre' => ''
+    ];
+
+    public $open_edit = false;
     
     public function render()
     {   
@@ -27,7 +31,10 @@ class ShowPost extends Component
         ->orderBy($this->sort, $this->direction)
         ->get();
 
-        return view('livewire.show-post', compact('Inventarios'));
+
+     
+
+        return view('livewire.show-post', compact('Inventarios'), ['Inventario' => Auth::user()->Inventario,]);
     }
 
     public function order($sort) 
@@ -53,7 +60,18 @@ class ShowPost extends Component
 
     public function edit(Inventario $Inventario) {
         $this-> Inventario = $Inventario;
-        $this-> Open_Edit = true;
+        $this-> open_edit = true;
+
+        $this-> PostEdit['Nombre'] = $Inventario->Nombre;
+    }
+
+
+    public function delete(Inventario $Inventario) 
+    {   
+        /*Mirar Cómo autorizar/*
+      /*  $this->authorize('delete', $Inventario);*/
+ 
+        $Inventario->delete();
     }
 
   
