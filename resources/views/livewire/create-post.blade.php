@@ -43,6 +43,7 @@
                             value="{{ old('Ubicacion') }}" placeholder="Prueba Tipo A...">
                             <x-input-error for="Ubicacion"/>
                     </div>
+                    
                     <div>
 
                         <label for="Estado">
@@ -62,19 +63,16 @@
                         </label><input type="text" wire:model.blur="Precio" name="Precio" class="input-crear"
                             value="{{ old('Precio') }}" placeholder="Prueba Tipo A...">
                             <x-input-error for="Precio"/>
-                       
-
                     </div>
-
-
 
                     <div>
                         <label for="Ultimo_Mantenimiento">Último Mantenimiento</label><input wire:model.blur="Ultimo_Mantenimiento" type="date"
                             id="start" name="Ultimo_Mantenimiento" value="2018-07-22" min="2018-01-01"
                             max="2018-12-31" />
-                            
+
                             <x-input-error for="Ultimo_Mantenimiento"/>
                     </div>
+
                     <div>
                         <label for="Recomentacion">
                             Recomendación

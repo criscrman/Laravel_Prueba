@@ -7,6 +7,8 @@ use App\Models\Inventario;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 
+use Carbon\Carbon;
+
 class ShowPost extends Component
 {
     use WithPagination;
@@ -19,8 +21,17 @@ class ShowPost extends Component
 
 
     public $PostEdit = [
-        'Nombre' => ''
+        'Nombre' => '',
+        'Serial' => '',
+        'Ubicacion' => '',
+        'Estado' => '',
+        'Precio' => '',
+        'Ultimo_Mantenimiento' => 'date:Y-m-d',
+        'Recomentacion' => ''
     ];
+
+    public $start_date ='';
+    public $textarea ='';
 
     public $open_edit = false;
     
@@ -30,6 +41,8 @@ class ShowPost extends Component
         ->orWhere('Estado', 'like','%'. $this->search.'%')
         ->orderBy($this->sort, $this->direction)
         ->get();
+
+       /* $this->start_date = Carbon::now()->format('Y-m-d'); */
 
 
      
@@ -59,10 +72,17 @@ class ShowPost extends Component
     }
 
     public function edit(Inventario $Inventario) {
+
         $this-> Inventario = $Inventario;
         $this-> open_edit = true;
 
         $this-> PostEdit['Nombre'] = $Inventario->Nombre;
+        $this-> PostEdit['Serial'] = $Inventario->Serial;
+        $this-> PostEdit['Ubicacion'] = $Inventario->Ubicacion;
+        $this-> PostEdit['Estado'] = $Inventario->Estado;
+        $this-> PostEdit['Precio'] = $Inventario->Precio;
+        $this-> start_date = $this-> PostEdit['Ultimo_Mantenimiento'] = $Inventario->Ultimo_Mantenimiento;
+        $this -> textarea = $this-> PostEdit['Recomentacion'] = $Inventario->Recomentacion;
     }
 
 

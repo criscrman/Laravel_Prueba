@@ -144,10 +144,89 @@
     <x-slot name="content">
         {{$Inventario->id}}
 
-        <label for="Nombre" class="">Nombre Completo</label>
-        <input type="text" wire:model="PostEdit.Nombre" name="Nombre" class="input-crear"
-            placeholder="Cristian Peréz..." required>
-            <x-input-error for="Nombre"/>
+        <div class="p-4 md:p-5 space-y-4 ">
+            <div class="form"> 
+                <form  class="form-1  md:grid grid-cols-2 gap-4"
+                action="{{ route('Inventario.store') }}" method="post">
+                @csrf
+                
+                <div>
+                <label for="Nombre" class="">Nombre Completo</label>
+                <input type="text" wire:model="PostEdit.Nombre" name="Nombre" class="input-crear"
+                    placeholder="Cristian Peréz..." required>
+                    <x-input-error for="Nombre"/>
+                </div>
+
+                <div>
+
+                    <label for="Serial">
+                        Serial
+                    </label><input type="text" wire:model="PostEdit.Serial" name="Serial" class="input-crear""
+                        x-validate.wholenumber
+                        data-error-msg="positive whole number required">
+                        <x-input-error for="Serial"/>
+                    
+                </div>
+
+                <div>
+
+                    <label for="Ubicacion">
+                        Ubicación
+                    </label><input type="text" wire:model="PostEdit.Ubicacion" name="Ubicacion" class="input-crear">
+                    <x-input-error for="Ubicacion"/>
+                </div>
+
+                <div>
+
+                    <label for="Estado">
+                        Estado
+                    </label><input type="text" wire:model="PostEdit.Estado" name="Estado" class="input-crear">
+                    <x-input-error for="Estado"/>
+                
+                </div>
+
+                <div>
+                    <label for="Precio">
+                        Precio
+                    </label><input type="text" wire:model="PostEdit.Precio" name="Precio" class="input-crear">
+                        <x-input-error for="Precio"/>
+                </div>
+
+                <div>
+                    <label for="Ultimo_Mantenimiento">Último Mantenimiento</label><input  type="date"
+                        id="start" name="Ultimo_Mantenimiento"  wire:model="start_date" min="2018-01-01"
+                        max="2032-12-31" value="{{ Carbon\Carbon::parse($start_date)->format('Y-m-d')}}" />
+                        <x-input-error for="Ultimo_Mantenimiento"/>
+                </div>
+
+
+                <div>
+                    <label for="Recomentacion">
+                        Recomendación
+                    </label><input type="text" name="Recomentacion" wire:model.change="PostEdit.Recomentacion"  class="input-crear">
+                        <x-input-error for="Recomentacion"/>
+                    
+
+                </div>
+
+
+                <div>
+                    <label for="Descripcion">Descripción</label>
+                    <textarea name="Descripcion" wire:model="textarea" class="input-crear" cols="30" rows="3">{$textarea}</textarea>
+                    <x-input-error for="Descripcion"/>
+                  
+                </div>
+
+               
+
+
+
+
+
+
+            </div>
+
+
     </x-slot>
 
     <x-slot name="footer">

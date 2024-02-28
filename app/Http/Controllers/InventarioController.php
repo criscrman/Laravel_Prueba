@@ -65,7 +65,7 @@ class InventarioController extends Controller
 
         /* $prueba = prueba::find($id);*/
 
-        return view('Inventario.edit', compact('prueba'));
+        return view('inventario.edit', compact('inventario'));
 
     }
 
