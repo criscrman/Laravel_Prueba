@@ -105,15 +105,17 @@
                     {{$Inventario->Estado}}
                 </td>
                 <td class="px-6 py-4">
-                    
+                    <div class="inline-flex rounded-md shadow-sm">
                     <a class="btn btn-green" wire:click.prevent="edit(({{ $Inventario->id }}))">
                         <i class="fas fa-edit"></i>
+                       
                     </a>
 
 
-                    <button wire:click="delete({{ $Inventario->id }})">Eliminar</button> 
+                    <button class="btn btn-red" wire:click="delete({{ $Inventario->id }})">
+                        <i class="fa fa-trash-o"></i></button> 
 
-                    
+                    </div>
 
               
          
@@ -146,7 +148,7 @@
 
         <div class="p-4 md:p-5 space-y-4 ">
             <div class="form"> 
-                <form  class="form-1  md:grid grid-cols-2 gap-4"
+                <form  class="form-1  md:grid grid-cols-2 gap-4" wire:submit="update"
                 action="{{ route('Inventario.store') }}" method="post">
                 @csrf
                 
@@ -230,6 +232,8 @@
     </x-slot>
 
     <x-slot name="footer">
+
+        <button class="btn" type="submit">Save</button>
     </x-slot>
 
 

@@ -34,6 +34,8 @@ class ShowPost extends Component
     public $textarea ='';
 
     public $open_edit = false;
+
+    public $updater;
     
     public function render()
     {   
@@ -71,18 +73,40 @@ class ShowPost extends Component
        
     }
 
-    public function edit(Inventario $Inventario) {
+    public function edit($Inventario) {
 
-        $this-> Inventario = $Inventario;
+        $this -> updater = $Inventario;
         $this-> open_edit = true;
 
-        $this-> PostEdit['Nombre'] = $Inventario->Nombre;
-        $this-> PostEdit['Serial'] = $Inventario->Serial;
-        $this-> PostEdit['Ubicacion'] = $Inventario->Ubicacion;
-        $this-> PostEdit['Estado'] = $Inventario->Estado;
-        $this-> PostEdit['Precio'] = $Inventario->Precio;
-        $this-> start_date = $this-> PostEdit['Ultimo_Mantenimiento'] = $Inventario->Ultimo_Mantenimiento;
-        $this -> textarea = $this-> PostEdit['Recomentacion'] = $Inventario->Recomentacion;
+        $Inventarioid = Inventario::find($Inventario);
+
+        $this-> PostEdit['Nombre'] = $Inventarioid->Nombre;
+        $this-> PostEdit['Serial'] = $Inventarioid->Serial;
+        $this-> PostEdit['Ubicacion'] = $Inventarioid->Ubicacion;
+        $this-> PostEdit['Estado'] = $Inventarioid->Estado;
+        $this-> PostEdit['Precio'] = $Inventarioid->Precio;
+        $this-> start_date = $this-> PostEdit['Ultimo_Mantenimiento'] = $Inventarioid->Ultimo_Mantenimiento;
+        $this -> textarea = $this-> PostEdit['Recomentacion'] = $Inventarioid->Recomentacion;
+    }
+
+    public function update(){
+        $Inventario = Inventario::find($this->updater);
+
+        $Inventario->update([
+            'Nombre' => $this->PostEdit['Nombre'],
+            'Serial' => $this->PostEdit['Serial'],
+            'Ubicacion' => $this->PostEdit['Ubicacion'],
+            'Estado' => $this->PostEdit['Estado'],
+            'Precio' => $this->PostEdit['Precio'],
+            
+    'Ultimo_Mantenimiento' => $this-> start_date,
+    'Recomentacion' => $this -> textarea
+
+        ]);
+
+       $this->reset(['updater','PostEdit','open_edit']);
+       $this->Inventario = Inventario::all();
+
     }
 
 
