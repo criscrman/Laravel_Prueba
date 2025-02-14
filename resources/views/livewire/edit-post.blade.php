@@ -1,6 +1,6 @@
 <div>
     <a href="" class="btn btn-green" wire:click="$set('opens',true)">
-        <i class="fas fa-edit"></i>
+        <i class="fas fa-edit">Pepe</i>
     </a>
 </div>
 @livewire(EditPost::class, ['Inventario' => $Inventario], key($Inventario->id))
